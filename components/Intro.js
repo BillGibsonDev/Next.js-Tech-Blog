@@ -5,23 +5,29 @@ import * as pallette from '../styled/ThemeVariables.js';
 // components
 import Link from 'next/link';
 import Image from 'next/image.js';
+
 //images
-//import Edit from '../public/editIconWhite.png';
+import Edit from '../public/editIconWhite.png';
+
+// redux
+import { useSelector } from 'react-redux';
 
 export default function Intro({article, splitDate, creator}) {
+    
+    const user = useSelector((state) => state.user);
     
     return (
         <StyledIntro>
             <div className="title-container">
                 <h4>{article.postTitle}</h4>
                 <div className="icon-container">
-                    <Link id="tag-link" href={`/tags/${article.tag}`}>{article.tag}</Link>
+                    <Link href={`/tags/${article.tag}`}>{article.tag}</Link>
                     <div className="button-container">
-                        {/* {
-                            user.role === process.env.REACT_APP_ADMIN_SECRET || user.user === article.authorUsername 
-                            ? <Link href={`/EditPostPage/${article._id}`}><Image id="edit" src={Edit} alt="" /></Link>
+                        {
+                            user.role === process.env.NEXT_PUBLIC_ADMIN_SECRET || user.user === article.authorUsername 
+                            ? <Link href={`/EditPostPage/${article._id}`}><Image src={Edit} alt="" /></Link>
                             : <></>
-                        } */}
+                        }
                     </div> 
                 </div>
             </div>

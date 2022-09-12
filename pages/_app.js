@@ -3,18 +3,18 @@ import '../styles/globals.css'
 // components
 import Layout from '../components/layout';
 
-// context
-import { AuthWrapper } from '../context/AuthContext.js';
+import { wrapper, store } from "../store/store";
+import { Provider } from "react-redux";
 
 function MyApp({ Component, pageProps }) {
 
   return (
-    <AuthWrapper>
+    <Provider store={store}>
       <Layout>
         <Component {...pageProps} />
       </Layout>
-    </AuthWrapper>
+    </Provider>
   )
 }
 
-export default MyApp;
+export default wrapper.withRedux(MyApp);

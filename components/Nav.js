@@ -7,7 +7,13 @@ import * as pallette from '../styled/ThemeVariables.js';
 // public
 import Hamburger from '../public/hamburgerWhite2.png';
 import Image from 'next/image.js';
-const Nav = ({isLoggedIn}) => {
+
+// redux
+import { useSelector } from 'react-redux';
+
+const Nav = () => {
+
+    const user = useSelector((state) => state.user);
 
     const openNav = () => {
         document.getElementById("myNav").style.width = "100%";
@@ -21,7 +27,7 @@ const Nav = ({isLoggedIn}) => {
         <StyledNav>
             <Link href="/"><a className="logo">Tech Blog</a></Link>
             {
-                !isLoggedIn
+                user === []
                 ? <nav>
                     <Link href="/">Home</Link>
                     <Link href="/about">About</Link>
@@ -36,7 +42,7 @@ const Nav = ({isLoggedIn}) => {
             <div id="myNav" className="overlay">
                 <button onClick={() => { closeNav() }}>&times;</button>
                 {
-                    !isLoggedIn
+                    user === []
                     ? <div className="overlayContent" onClick={() => { closeNav() }}>
                         <Link href="/" onClick={() => { closeNav() }}>Home</Link>
                         <Link href="/about">About</Link>

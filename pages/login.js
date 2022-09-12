@@ -4,18 +4,9 @@ import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { StyledButton } from '../styled/StyledButton';
 
-// context
-import useAuthContext from '../context/AuthContext';
-
 import { useRouter } from 'next/router';
 
 const Login = () => {
-	
-	const context = useAuthContext();
-
-	console.log(context.value)
-
-	const { isLoggedIn, setLoggedIn } = useState(false);
 
 	const [ username, setUsername ] = useState('');
 	const [ password, setPassword ] = useState('');
@@ -39,8 +30,6 @@ const Login = () => {
 			lastLogin: lastLogin,
 		})
 		.then(function(response){
-			setLoading(false);
-			setLoggedIn(true)
 			if (response.data === "LOGGED IN"){
 				axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/${process.env.NEXT_PUBLIC_SET_ROLE_URL}`, {
 					username: username, 
@@ -61,34 +50,29 @@ const Login = () => {
 		.catch(function (error) {
 			alert("Wrong Username or Password");
 			console.log(error);
-			setLoading(false);
 		});
 }
 
 	return (
 		<StyledLoginPage>
 			<h3>Log In</h3>
-			{
-				isLoggedIn
-				? <h1>You are logged in</h1>
-				: <div className="form-wrapper">
-					<label>Username:</label>
-					<input 
-						type="text" 
-						onChange={(event) => {
-							setUsername(event.target.value);
-						}}
-					/>
-					<label>Password:</label>
-					<input 
-						type="password" 
-						onChange={(event) => {
-							setPassword(event.target.value);
-						}}
-					/>
-					<StyledButton type="submit" onClick={() =>{ handleLogin }}>Sign In</StyledButton>
-				</div>
-			}
+			<div className="form-wrapper">
+				<label>Username:</label>
+				<input 
+					type="text" 
+					onChange={(event) => {
+						setUsername(event.target.value);
+					}}
+				/>
+				<label>Password:</label>
+				<input 
+					type="password" 
+					onChange={(event) => {
+						setPassword(event.target.value);
+					}}
+				/>
+				<StyledButton type="submit" onClick={() =>{ handleLogin( username, password, lastLogin ) }}>Sign In</StyledButton>
+			</div>
 		</StyledLoginPage>
 	)
 }
@@ -133,4 +117,4 @@ const StyledLoginPage = styled.div`
 	}
 `;
 
-export default Login
+export default Login;
