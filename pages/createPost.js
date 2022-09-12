@@ -4,11 +4,11 @@ import { marked } from 'marked';
 
 // styled
 import styled from 'styled-components';
-import { StyledButton } from '../../styled/StyledButton';
-import * as pallette from '../../styled/ThemeVariables.js';
+import { StyledButton } from '../styled/StyledButton';
+import * as pallette from '../styled/ThemeVariables.js';
 
 // functions
-import { useConfirmRole } from '../../functions/ConfirmRole';
+import { useConfirmRole } from '../functions/ConfirmRole';
     
 const CreatePost = () =>{
 

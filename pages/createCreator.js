@@ -3,12 +3,12 @@ import axios from 'axios';
 
 // styled
 import styled from 'styled-components';
-import { StyledButton } from '../../styled/StyledButton';
-import * as pallette from '../../styled/ThemeVariables.js';
+import { StyledButton } from '../styled/ThemeVariables';
+import * as pallette from '../styled/ThemeVariables';
 
 // functions
-import { unauthorized } from '../../functions/Unauthorized';
-import { useConfirmAdmin } from '../../functions/ConfirmAdmin';
+import { unauthorized } from '../functions/Unauthorized';
+import { useConfirmAdmin } from '../functions/ConfirmAdmin';
 
 // redux
 import { useSelector } from 'react-redux';
