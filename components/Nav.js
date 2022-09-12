@@ -51,7 +51,9 @@ const Nav = ({isLoggedIn}) => {
                     </div>
                 }
             </div>
-            <Image id='hamburger' src={Hamburger} width='30px;' height='30px;' onClick={() => { openNav() }} alt="hamburger menu"/>
+            <div className="hamburger">
+                <Image src={Hamburger} width='30px;' height='30px;' onClick={() => { openNav() }} alt="hamburger menu"/>
+            </div>
         </StyledNav>
     )
 }
@@ -137,7 +139,7 @@ const StyledNav = styled.nav`
             }
         } 
     }
-    #hamburger {
+    .hamburger {
         cursor: pointer;
         display: none;
         width: 30px;

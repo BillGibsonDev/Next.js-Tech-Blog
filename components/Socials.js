@@ -59,6 +59,8 @@ const StyledSocials = styled.div`
         width: 35px;
         height: 35px;
         margin: 0 6px;
+        position: relative;
+        display: block;
         img {
             height: 100%;
             width: 100%;

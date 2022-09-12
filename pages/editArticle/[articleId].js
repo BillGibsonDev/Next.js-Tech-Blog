@@ -4,13 +4,10 @@ import { marked } from 'marked';
 
 // styled
 import styled from 'styled-components';
-import { StyledButton } from '../../../Styled/StyledButton';
-import * as pallette from '../../../Styled/ThemeVariables.js';
+import { StyledButton } from '../../styled/StyledButton';
+import * as pallette from '../../styled/ThemeVariables.js';
 
 import { useRouter } from 'next/router';
-
-// redux
-import { useSelector } from 'react-redux';
 
 // components
 import EditIntro from './components/EditIntro';
@@ -19,8 +16,6 @@ const EditArticle = () => {
 
     const router = useRouter();
     const { articleId } = router.query
-
-    const user = useSelector((state) => state.user);
 
     const [ isLoading, setLoading ] = useState(true);
     const [ article, setArticle ] = useState({});
@@ -38,8 +33,8 @@ const EditArticle = () => {
                 console.log(error);
             });
         }
-        handlePost(postId);
-    }, [ articleId, user ])
+        handlePost(articleId);
+    }, [ articleId ])
 
     const [ postTitle, setPostTitle ] = useState(article.postTitle);
     const [ linkTitle, setLinkTitle ] = useState(article.linkTitle);

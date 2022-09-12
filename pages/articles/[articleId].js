@@ -64,7 +64,9 @@ const Article = ({article}) => {
               >
             </div>  
             <div className="bottom-author-container">
-              <Image src={creator.avatar} layout="fill" alt="" />
+              <div className="avatar-container">
+                <Image src={creator.avatar} layout="fill" alt="" />
+              </div>
               <div className="author-info-wrapper">
                 <Link href={`/creators/${article.authorUsername}`}>{article.author}</Link>
                 <p>{creator.bio}</p>
@@ -152,14 +154,28 @@ const StyledArticle = styled.div`
       border-top: 2px solid #ffffff;
       border-bottom: 2px solid #ffffff;
       padding: 10px 0;
-      img {
+      .avatar-container {
         width: 50px;
+        height: 50px;
+        object-fit: cover;
+        position: relative;
+        display: block;
+        img {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          object-fit: cover;
+        }
       }
       .author-info-wrapper {
         margin-left: 6px;
         a {
           font-size: 16px;
           color: #fff;
+          font-weight: 700;
+          &:hover {
+            text-decoration: underline;
+          }
         }
         p {
           font-size: 12px;

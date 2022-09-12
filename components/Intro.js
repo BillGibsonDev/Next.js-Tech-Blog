@@ -25,10 +25,14 @@ export default function Intro({article, splitDate, creator}) {
                     </div> 
                 </div>
             </div>
-            <Image id="thumbnail" layout="fill" src={article.thumbnail} alt="" />
+            <div className="thumbnail-container">
+                <Image layout="fill" src={article.thumbnail} alt="" />
+            </div>
             <div className="info-container">
                 <div className="author-container">
-                    <Image src={creator.avatar} layout="fill" alt="" />
+                    <div className="avatar-container">
+                        <Image src={creator.avatar} layout="fill" alt="" />
+                    </div>
                     <Link href={`/creators/${article.authorUsername}`}>{article.author}</Link>
                 </div>
                 <h5>{splitDate}</h5>
@@ -88,9 +92,20 @@ const StyledIntro = styled.section`
             }
         }
     }
-    #thumbnail {
+    .thumbnail-container {
+        display: block;
         width: 100%;
         max-width: 900px;
+        height: 100%;
+        min-height: 500px;
+        position: relative;
+         @media (max-width: 750px){
+            min-height: 300px;
+        }
+        img {
+            width: 100%;
+            height: 100%;
+        }
     }
     .info-container {
         display: flex;
@@ -102,9 +117,16 @@ const StyledIntro = styled.section`
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: relative;
+            .avatar-container {
+                display: block;
+                height: 35px;
+                width: 35px;
+                position: relative;
+            }
             img {
-                height: 30px;
-                width: 30px;
+                height: 100%;
+                width: 100%;
                 border-radius: 50%;
                 object-fit: cover;
             }

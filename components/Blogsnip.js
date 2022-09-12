@@ -39,7 +39,7 @@ const Blogsnip = ({ article }) => {
             <div className="article-wrapper">
                 <div className="thumbnail">
                     <Link href={`/articles/${article.linkTitle}/${article._id}`}>
-                        <Image src={article.thumbnail} alt={article.thumbnail} layout="intrinsic" width='100%;' height='100%;' />
+                        <Image src={article.thumbnail} alt={article.thumbnail} layout="fill" />
                     </Link>
                 </div>
                 <div className="info-wrapper">
@@ -47,7 +47,9 @@ const Blogsnip = ({ article }) => {
                     <Link href={`/articles/${article._id}`}><a className="title">{article.postTitle}</a></Link>
                     <div className="info-container">
                         <div className="author-header">
-                            <Image src={creator.avatar} width='30px;' layout="fill" height='30px;' alt="" />
+                            <div className="image-container">
+                                <Image src={creator.avatar} width='30px;' layout="responsive" height='30px;' alt={`${article.author} profile picture`} />
+                            </div>
                             <Link href={`/creators/${article.authorUsername}`}>{article.author}</Link>
                         </div>
                         <h5 id="date">{splitDate}</h5>
@@ -85,7 +87,15 @@ const StyledSnip = styled.div`
             width: 50%;
             height: 100%;
             @media (max-width: 750px){
+                width: 90%;
+                height: 30vh;
+                margin: auto;
+            }
+            a {
+                position: relative;
                 width: 100%;
+                height: 100%;
+                display: block;
             }
             img {
                 width: 100%;
@@ -99,7 +109,8 @@ const StyledSnip = styled.div`
             height: 70%;
             margin: auto auto auto 10px;
             @media (max-width: 750px){
-                width: 100%;
+                width: 90%;
+                margin: auto;
             }
             a {
                 margin: 6px 0;
@@ -135,13 +146,21 @@ const StyledSnip = styled.div`
                     justify-content: space-between;
                     align-items: center;
                     position: relative;
-                    img {
-                        height: 30px;
-                        width: 30px;
-                        border-radius: 50%;
-                        object-fit: cover;
+                    .image-container {
+                        position: relative;
+                        display: block;
+                        width: 35px;
+                        height: 35px;
                         margin-right: 4px;
-                    }
+                        img {
+                            position: relative;
+                            height: 35px;
+                            width: 35px;
+                            max-width: 35px;
+                            border-radius: 50%;
+                            object-fit: cover;
+                        }
+                    }   
                     a {
                         font-size: 18px;
                         color: ${pallette.helperGrey};
