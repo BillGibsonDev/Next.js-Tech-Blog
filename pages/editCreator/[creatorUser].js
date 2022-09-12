@@ -3,7 +3,7 @@ import axios from 'axios';
 
 // styled
 import styled from 'styled-components';
-import { StyledButton } from '../../styled/StyledButton';
+
 import * as pallette from '../../styled/ThemeVariables.js';
 
 // functions
@@ -184,8 +184,8 @@ const EditCreator = () => {
             </div>
             {
                 user.role === process.env.NEXT_PUBLIC_ADMIN_SECRET 
-                ? <StyledButton type="submit" onClick={()=>{handleUpdateCreator();}}>Update Creator</StyledButton>
-                : <StyledButton type="submit" onClick={()=>{unauthorized();}}>Register Creator</StyledButton>
+                ? <button className="button" type="submit" onClick={()=>{handleUpdateCreator();}}>Update Creator</button>
+                : <button className="button" type="submit" onClick={()=>{unauthorized();}}>Register Creator</button>
             }
 		</StyledRegister>
 	)

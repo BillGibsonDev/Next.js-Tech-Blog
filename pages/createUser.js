@@ -7,7 +7,6 @@ import { useConfirmAdmin } from '../functions/ConfirmAdmin';
 
 // styled
 import styled from 'styled-components';
-import { StyledButton } from '../styled/StyledButton.js';
 import * as pallette from '../styled/ThemeVariables.js';
 
 // redux
@@ -114,8 +113,8 @@ const CreateUser = () => {
 					/>
 					{
                         user.role === process.env.NEXT_PUBLIC_ADMIN_SECRET 
-						? <StyledButton type="submit" onClick={()=>{registerUser();}}>Create User</StyledButton>
-                        : <StyledButton type="submit" onClick={()=>{unauthorized();}}>Create User</StyledButton>
+						? <button className="button" type="submit" onClick={()=>{registerUser();}}>Create User</button>
+                        : <button className="button" type="submit" onClick={()=>{unauthorized();}}>Create User</button>
                     }
 				</div>
 		</StyledRegister>

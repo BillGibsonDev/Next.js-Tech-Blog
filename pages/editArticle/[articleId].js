@@ -4,7 +4,6 @@ import { marked } from 'marked';
 
 // styled
 import styled from 'styled-components';
-import { StyledButton } from '../../styled/StyledButton';
 import * as pallette from '../../styled/ThemeVariables.js';
 
 import { useRouter } from 'next/router';
@@ -116,8 +115,8 @@ const EditArticle = () => {
                         >
                     </div>  
                     <div className="bottom-button-container">
-                        <StyledButton onClick={() => { handleUpdate() }}>Update</StyledButton>
-                        <StyledButton id="delete" onClick={() => { deletePost() }}>Delete</StyledButton>
+                        <button className="button" onClick={() => { handleUpdate() }}>Update</button>
+                        <button className="button" id="delete" onClick={() => { deletePost() }}>Delete</button>
                     </div>
                 </div>
             }

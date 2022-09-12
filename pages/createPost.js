@@ -4,7 +4,6 @@ import { marked } from 'marked';
 
 // styled
 import styled from 'styled-components';
-import { StyledButton } from '../styled/StyledButton.js';
 import * as pallette from '../styled/ThemeVariables.js';
 
 // functions
@@ -129,7 +128,7 @@ const CreatePost = () =>{
                     </label>
                 </section>
                 <div className="button-wrapper">
-                    <StyledButton onClick={() => { handleSubmit() }}>Submit</StyledButton>
+                    <button className="button" onClick={() => { handleSubmit() }}>Submit</button>
                 </div>
 
                 <div className="content-container"

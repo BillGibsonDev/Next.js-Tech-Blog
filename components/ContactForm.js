@@ -42,9 +42,9 @@ const ContactForm = () => {
         field="message"
         errors={state.errors}
       />
-      <StyledButton type="submit" disabled={state.submitting}>
+      <button className="button" type="submit" disabled={state.submitting}>
         Submit
-      </StyledButton>
+      </button>
     </form>
     </StyledForm>
   );

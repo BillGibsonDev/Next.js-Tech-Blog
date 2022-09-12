@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 
 // styled
 import styled from 'styled-components';
-import { StyledButton } from '../styled/StyledButton';
 
 import { useRouter } from 'next/router';
 
@@ -71,7 +70,7 @@ const Login = () => {
 						setPassword(event.target.value);
 					}}
 				/>
-				<StyledButton type="submit" onClick={() =>{ handleLogin( username, password, lastLogin ) }}>Sign In</StyledButton>
+				<button className="button" type="submit" onClick={() =>{ handleLogin( username, password, lastLogin ) }}>Sign In</button>
 			</div>
 		</StyledLoginPage>
 	)
