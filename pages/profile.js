@@ -11,14 +11,19 @@ import Link from 'next/link';
 // functions
 import { useConfirmRole } from '../functions/ConfirmRole';
 
+// redux
+import { useSelector } from 'react-redux';
+
 export default function ProfilePage() {
+
+    const user = useSelector((state) => state.user);
+
+    const confirm = useConfirmRole(user.role);
 
     const [ joinDate, setJoinDate ] = useState("");
 
     let tokenPW = sessionStorage.getItem("tokenPW");
 	let tokenUser = sessionStorage.getItem("tokenUser");
-
-    const confirm  = useConfirmRole(user.role);
 
     useEffect(() => {
         const handleJoinDate = () => {

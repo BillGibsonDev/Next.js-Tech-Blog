@@ -3,8 +3,8 @@ import axios from 'axios';
 
 // styled
 import styled from 'styled-components';
-import { StyledButton } from '../styled/ThemeVariables';
-import * as pallette from '../styled/ThemeVariables';
+import { StyledButton } from '../styled/StyledButton.js';
+import * as pallette from '../styled/ThemeVariables.js';
 
 // functions
 import { unauthorized } from '../functions/Unauthorized';
@@ -17,7 +17,7 @@ const CreateCreator = () => {
 
     const user = useSelector((state) => state.user);
 
-    const confirm  = useConfirmAdmin(user.role);
+    const confirm = useConfirmAdmin(user.role);
 
 	const [ creator, setCreator ] = useState("");
 	const [ twitter, setTwitter] = useState("");
