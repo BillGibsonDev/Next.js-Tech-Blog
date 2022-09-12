@@ -3,14 +3,21 @@ import axios from 'axios';
 
 // functions
 import { unauthorized } from '../functions/Unauthorized';
+import { useConfirmAdmin } from '../functions/ConfirmAdmin';
 
 // styled
 import styled from 'styled-components';
 import { StyledButton } from '../styled/StyledButton';
 import * as pallette from '../styled/ThemeVariables.js';
 
+// redux
+import { useSelector } from 'react-redux';
 
 const CreateUser = () => {
+
+	const user = useSelector((state) => state.user);
+
+	const confirm = useConfirmAdmin(user.role)
 
 	const [ username, setUsername ] = useState("");
 	const [ password, setPassword ] = useState("");
@@ -18,7 +25,7 @@ const CreateUser = () => {
 	const [ userRole, setUserRole ] = useState("");
 	const [ email, setEmail ] = useState("");
 	const [ confirmEmail, setConfirmEmail ] = useState("");
-	const [joinDate, setJoinDate ] = useState("");
+	const [ joinDate, setJoinDate ] = useState("");
 
 
  	useEffect(() => {

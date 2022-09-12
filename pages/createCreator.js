@@ -10,9 +10,14 @@ import * as pallette from '../styled/ThemeVariables';
 import { unauthorized } from '../functions/Unauthorized';
 import { useConfirmAdmin } from '../functions/ConfirmAdmin';
 
+// redux
+import { useSelector } from 'react-redux';
+
 const CreateCreator = () => {
 
-    const confirm  = useConfirmAdmin();
+    const user = useSelector((state) => state.user);
+
+    const confirm  = useConfirmAdmin(user.role);
 
 	const [ creator, setCreator ] = useState("");
 	const [ twitter, setTwitter] = useState("");

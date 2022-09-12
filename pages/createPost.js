@@ -9,10 +9,15 @@ import * as pallette from '../styled/ThemeVariables.js';
 
 // functions
 import { useConfirmRole } from '../functions/ConfirmRole';
-    
+  
+// redux
+import { useSelector } from 'react-redux';
+
 const CreatePost = () =>{
 
-    const confirm = useConfirmRole();
+    const user = useSelector((state) => state.user);
+
+    const confirm = useConfirmRole(user.role);
 
     const [ postTitle, setPostTitle ] = useState("");
     const [ linkTitle, setLinkTitle ] = useState("");

@@ -9,10 +9,19 @@ import * as pallette from '../../styled/ThemeVariables.js';
 
 import { useRouter } from 'next/router';
 
+import { useConfirmRole } from '../../functions/ConfirmRole';
+
+// redux
+import { useSelector } from 'react-redux';
+
 // components
 import EditIntro from '../../components/EditIntro';
 
 const EditArticle = () => {
+
+    const user = useSelector((state) => state.user);
+
+    const confirm = useConfirmRole(user.role);
 
     const router = useRouter();
     const { articleId } = router.query

@@ -12,12 +12,17 @@ import { useConfirmAdmin } from '../../functions/ConfirmAdmin';
 
 import { useRouter } from 'next/router';
 
+// redux
+import { useSelector } from 'react-redux';
+
 const EditCreator = () => {
+
+    const user = useSelector((state) => state.user);
 
     const router = useRouter();
     const { creatorUser } = router.query
 
-    const confirm  = useConfirmAdmin();
+    const confirm  = useConfirmAdmin(user.role);
 
     const [ creator, setCreator ] = useState([]);
 

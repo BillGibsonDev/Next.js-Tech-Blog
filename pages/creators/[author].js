@@ -6,6 +6,7 @@ import Blogsnip from '../../components/Blogsnip';
 import CreatorHeader from '../../components/CreatorHeader.js';
 
 import { useRouter } from 'next/router';
+import Head from 'next/head';
 
 const Creator =  ({creator}) => {
 
@@ -34,10 +35,20 @@ const Creator =  ({creator}) => {
       setValue(value + i);
     }
 
-    console.log(creator)
-
     return (
         <>
+            <Head>
+                <title>{`Tech Blog | ${creator[0].creator}`}</title>
+                <meta name="description" content={creator[0].bio} />
+                <meta property="og:url" content="https://dainty-trifle-b85068.netlify.app/" />
+                <meta property="og:site_name" content={`Tech Blog | ${creator[0].creator}`} />
+                <meta property="og:title" content={`Tech Blog | ${creator[0].creator}`} />
+                <meta property="og:description" content={creator[0].bio} />
+                <meta property="og:image" content={creator[0].avatar} />
+                <meta property="twitter:image" content={creator[0].avatar} /> 
+                <meta property="twitter:description" content={creator[0].bio} />
+                <meta property="twitter:title" content={`Tech Blog | ${creator[0].creator}`} />
+            </Head>
             <CreatorHeader
                 bio={creator[0].bio}
                 location={creator[0].location}
