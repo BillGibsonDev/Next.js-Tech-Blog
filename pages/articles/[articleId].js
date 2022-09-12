@@ -44,6 +44,8 @@ const Article = ({article}) => {
           <meta property="og:title" content={article.postTitle} />
           <meta property="og:description" content={article.content.slice(0, 100)} />
           <meta property="og:image" content={article.thumbnail} />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:site" content="@gibbybreakstech" />
           <meta property="twitter:image" content={article.thumbnail} />
           <meta property="twitter:description" content={article.content.slice(0, 100)} />
           <meta property="twitter:title" content={article.postTitle} />

@@ -48,6 +48,8 @@ const Creator =  ({creator}) => {
                 <meta property="twitter:image" content={creator[0].avatar} /> 
                 <meta property="twitter:description" content={creator[0].bio} />
                 <meta property="twitter:title" content={`Tech Blog | ${creator[0].creator}`} />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:site" content="@gibbybreakstech" />
             </Head>
             <CreatorHeader
                 bio={creator[0].bio}

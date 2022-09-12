@@ -17,6 +17,8 @@ const Home = ({articles}) => {
 				<meta property="og:site_name" content="Tech Blog" />
 				<meta property="og:title" content={`Tech Blog`} />
 				<meta property="twitter:title" content={`Tech Blog`} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@gibbybreakstech" />
         <meta name="description" content="Tech articles aimed at helping learn and improve Web Development skills." />
         <meta name="keywords" content="HTML, CSS, JavaScript, React, React.js, APIs, Web Developer Blog, Frontend Web Developer, Frontend Developer, Front End Developer, Tech Blog, Programming Blog, Web Design Blog, programming" />
 			  <meta name="og:description" content="Tech articles aimed at helping learn and improve Web Development skills." />
