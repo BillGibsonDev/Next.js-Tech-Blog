@@ -35,7 +35,7 @@ const EditIntro = ({
                             }}
                         />
                     </label>
-                    <label>Post Title(Add '-' to Title):
+                    <label>Post Title(Add - to Title):
                         <input
                             type="text"
                             id="linkTitle"

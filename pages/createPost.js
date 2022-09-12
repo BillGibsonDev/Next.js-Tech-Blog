@@ -7,15 +7,10 @@ import styled from 'styled-components';
 import { StyledButton } from '../../styled/StyledButton';
 import * as pallette from '../../styled/ThemeVariables.js';
 
-// redux
-import { useSelector } from 'react-redux';
-
 // functions
 import { useConfirmRole } from '../../functions/ConfirmRole';
     
 const CreatePost = () =>{
-
-    const user = useSelector((state) => state.user);
 
     const confirm = useConfirmRole(user.role);
 
@@ -31,7 +26,7 @@ const CreatePost = () =>{
         if(confirm){
             axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/${process.env.NEXT_PUBLIC_ADD_POST_URL}`, {
                 author: author,
-                authorUsername: user.user,
+                authorUsername: authorUsername,
                 postTitle: postTitle,
                 linkTitle: linkTitle,
                 postDate: postDate,
@@ -88,7 +83,7 @@ const CreatePost = () =>{
                                     }}
                                 />
                             </label>
-                            <label>Post Title(Add '-' to Title):
+                            <label>Post Title(Add - to Title):
                                 <input
                                     type="text"
                                     id="linkTitle"
