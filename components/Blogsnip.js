@@ -39,7 +39,7 @@ const Blogsnip = ({ article }) => {
             <div className="article-wrapper">
                 <div className="thumbnail">
                     <Link href={`/articles/${article.linkTitle}/${article._id}`}>
-                        <Image src={article.thumbnail} alt={article.thumbnail} layout="fill" />
+                        <Image src={article.thumbnail} alt={article.postTitle} layout="fill" />
                     </Link>
                 </div>
                 <div className="info-wrapper">
@@ -48,7 +48,7 @@ const Blogsnip = ({ article }) => {
                     <div className="info-container">
                         <div className="author-header">
                             <div className="image-container">
-                                <Image src={creator.avatar} width='30px;' layout="responsive" height='30px;' alt={`${article.author} profile picture`} />
+                                <Image src={creator.avatar} width='30px;' height='30px;' layout="fill"  alt={`${article.author} profile picture`} />
                             </div>
                             <Link href={`/creators/${article.authorUsername}`}>{article.author}</Link>
                         </div>
