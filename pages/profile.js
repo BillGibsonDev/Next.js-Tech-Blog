@@ -47,7 +47,7 @@ const Profile = () => {
         }
         handleJoinDate();
         setLoading(false);
-    }, [ tokenPW, tokenUser, confirm ])
+    }, [ confirm ])
 
     return (
         <StyledProfilePage>
