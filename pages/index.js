@@ -6,9 +6,23 @@ import styled from "styled-components";
 // components
 import Blogsnip from '../components/Blogsnip';
 
+import Head from "next/head";
+
 const Home = ({articles}) => {
   return (
     <StyledHomePage>
+      <Head>
+				<title>{`Tech Blog`}</title>
+				<meta property="og:url" content="https://next-js-tech-blog.vercel.app/" />
+				<meta property="og:site_name" content="Tech Blog" />
+				<meta property="og:title" content={`Tech Blog`} />
+				<meta property="twitter:title" content={`Tech Blog`} />
+        <meta name="description" content="Tech articles aimed at helping learn and improve Web Development skills." />
+        <meta name="keywords" content="HTML, CSS, JavaScript, React, React.js, APIs, Web Developer Blog, Frontend Web Developer, Frontend Developer, Front End Developer, Tech Blog, Programming Blog, Web Design Blog, programming" />
+			  <meta name="og:description" content="Tech articles aimed at helping learn and improve Web Development skills." />
+        <meta name="twitter:description" content="Tech articles aimed at helping learn and improve Web Development skills." />
+        <meta name="keywords" content="HTML, CSS, JavaScript, React, React.js, APIs, Web Developer Blog, Frontend Web Developer, Frontend Developer, Front End Developer, Tech Blog, Programming Blog, Web Design Blog, programming" />
+      </Head>
       <div className="blog">
         <div className="blog-wrapper">
           {

@@ -37,7 +37,7 @@ const Article = ({article}) => {
     return (
       <StyledArticle>
         <Head>
-          <title>{article.postTitle}</title>
+          <title>{`Tech Blog | ${article.postTitle}`}</title>
           <meta name="description" content={article.content.slice(0, 100)} />
           <meta property="og:url" content="https://dainty-trifle-b85068.netlify.app/" />
           <meta property="og:site_name" content="Tech Blog" />

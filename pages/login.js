@@ -5,6 +5,8 @@ import styled from 'styled-components';
 
 import { useRouter } from 'next/router';
 
+import Head from 'next/head';
+
 const Login = () => {
 
 	const [ username, setUsername ] = useState('');
@@ -54,6 +56,13 @@ const Login = () => {
 
 	return (
 		<StyledLoginPage>
+			<Head>
+				<title>{`Tech Blog | Login`}</title>
+				<meta property="og:url" content="https://dainty-trifle-b85068.netlify.app/" />
+				<meta property="og:site_name" content="Tech Blog" />
+				<meta property="og:title" content={`Tech Blog | Login`} />
+				<meta property="twitter:title" content={`Tech Blog | Login`} />
+			</Head>
 			<h3>Log In</h3>
 			<div className="form-wrapper">
 				<label>Username:</label>
