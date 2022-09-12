@@ -17,14 +17,14 @@ const EditCreator = () => {
     const router = useRouter();
     const { creatorUser } = router.query
 
-    const confirm  = useConfirmAdmin(user.role);
+    const confirm  = useConfirmAdmin();
 
     const [ creator, setCreator ] = useState([]);
 
     useEffect(() => {
         window.scrollTo(0, 0);
         const getCreator = () => {
-            axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/${process.env.NEXT_PUBLIC_GET_CREATOR_URL}/${user.creatorUser }`)
+            axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/${process.env.NEXT_PUBLIC_GET_CREATOR_URL}/${creatorUser}`)
             .then(function(response){
                 setCreator(response.data[0]);
             })

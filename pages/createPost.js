@@ -12,7 +12,7 @@ import { useConfirmRole } from '../functions/ConfirmRole';
     
 const CreatePost = () =>{
 
-    const confirm = useConfirmRole(user.role);
+    const confirm = useConfirmRole();
 
     const [ postTitle, setPostTitle ] = useState("");
     const [ linkTitle, setLinkTitle ] = useState("");

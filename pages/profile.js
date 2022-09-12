@@ -8,19 +8,12 @@ import * as pallette from '../styled/ThemeVariables.js';
 // router
 import Link from 'next/link';
 
-// redux
-import { useSelector } from 'react-redux';
-
 // functions
 import { useConfirmRole } from '../functions/ConfirmRole';
 
 export default function ProfilePage() {
 
-    const [ isLoading, setLoading ] = useState(true);
     const [ joinDate, setJoinDate ] = useState("");
-
-    const user = useSelector((state) => state.user);
-    const articles = useSelector((state) => state.posts);
 
     let tokenPW = sessionStorage.getItem("tokenPW");
 	let tokenUser = sessionStorage.getItem("tokenUser");
@@ -29,13 +22,13 @@ export default function ProfilePage() {
 
     useEffect(() => {
         const handleJoinDate = () => {
-            axios.post(`${process.env.REACT_APP_BASE_URL}/${process.env.REACT_APP_LOGIN_URL}`, {
+            axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/${process.env.NEXT_PUBLIC_LOGIN_URL}`, {
                 username: tokenUser,
                 password: tokenPW,
             })
             .then(function(response){
                 if (response.data === "LOGGED IN"){
-                    axios.post(`${process.env.REACT_APP_BASE_URL}/${process.env.REACT_APP_GET_DATE_URL}`, {
+                    axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/${process.env.RNEXT_PUBLIC_GET_DATE_URL}`, {
                         username: tokenUser, 
                         password: tokenPW,
                     })
@@ -50,7 +43,7 @@ export default function ProfilePage() {
         }
         handleJoinDate();
         setLoading(false);
-    }, [ user, tokenPW, tokenUser, confirm ])
+    }, [ tokenPW, tokenUser, confirm ])
 
     return (
         <StyledProfilePage>
@@ -62,14 +55,14 @@ export default function ProfilePage() {
                 </div>
             </header>
             {
-                user.role === process.env.REACT_APP_ADMIN_SECRET || user.role === process.env.REACT_APP_CREATOR_SECRET 
+                user.role === process.env.NEXT_PUBLIC_ADMIN_SECRET || user.role === process.env.NEXT_PUBLIC_CREATOR_SECRET 
                 ? <div className="creator-dashboard">
                     <h3>Creator Dashboard</h3>
                     <div className="link-container">
                         <Link to="/CreatePostPage">Create Post</Link>
                         <Link to={`/edit-creator/${user.user}`}>Edit Creator</Link>
                         {
-                            user.role === process.env.REACT_APP_ADMIN_SECRET 
+                            user.role === process.env.NEXT_PUBLIC_ADMIN_SECRET 
                             ?  <>
                                 <Link to="/CreateUser">Create User</Link>
                                 <Link to="/CreateCreator">Create Creator</Link>
@@ -79,9 +72,7 @@ export default function ProfilePage() {
                     </div>
                     <h4>Your Articles</h4>
                     {
-                        isLoading
-                        ? <Loader />
-                        : !isLoading  && articles.filter(articles => articles.authorUsername === `${user.user}`).length === 0 
+                        articles.filter(articles => articles.authorUsername === `${user.user}`).length === 0 
                         ? <p>No Articles Found</p>
                         : <div className="article-wrapper" > 
                             {

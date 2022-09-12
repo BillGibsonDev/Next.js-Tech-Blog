@@ -11,7 +11,7 @@ import { useRouter } from 'next/router';
 
 export default function TagsPage ({articles}) {
 
-     const router = useRouter();
+    const router = useRouter();
 
     const { tag } = router.query
 

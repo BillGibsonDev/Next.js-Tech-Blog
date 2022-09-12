@@ -10,14 +10,9 @@ import * as pallette from '../styled/ThemeVariables';
 import { unauthorized } from '../functions/Unauthorized';
 import { useConfirmAdmin } from '../functions/ConfirmAdmin';
 
-// redux
-import { useSelector } from 'react-redux';
-
 const CreateCreator = () => {
 
-    const user = useSelector((state) => state.user);
-
-    const confirm  = useConfirmAdmin(user.role);
+    const confirm  = useConfirmAdmin();
 
 	const [ creator, setCreator ] = useState("");
 	const [ twitter, setTwitter] = useState("");
@@ -33,7 +28,7 @@ const CreateCreator = () => {
 
     const registerCreator = () => {
         if(confirm){
-            axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/${process.env.NEXT_PUBLIC_DD_CREATOR_URL}`, {
+            axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/${process.env.NEXT_PUBLIC_ADD_CREATOR_URL}`, {
                 creator: creator,
                 authorUsername: authorUsername,
                 avatar: avatar,
