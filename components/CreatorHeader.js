@@ -6,20 +6,17 @@ import Dot from '../public/dot.png';
 
 import styled from 'styled-components';
 
-export default function CreatorHeader ({creator, articles}) {
+export default function CreatorHeader ({avatar, bio, author, creator, authorUsername, location, articles}) {
 
     return (
         <StyledCreatorHeader>
             <div className="avatar-container">
-                <Image src={creator.avatar} layout="fill" alt="" />
+                <Image src={avatar} layout="fill" alt="" />
             </div>
             <h4>{creator}</h4>
-            <p>{creator.bio}</p>
+            <p>{bio}</p>
             <div className="info-container">
-                <h6>{creator.location}</h6>
-                <div className="dot-container">
-                    <Image src={Dot} layout="fill" alt="" /> 
-                </div>
+                <h6>{location}</h6>
                 <div className="dot-container">
                     <Image src={Dot} layout="fill" alt="" /> 
                 </div>
@@ -28,7 +25,7 @@ export default function CreatorHeader ({creator, articles}) {
                     <Image src={Dot} layout="fill" alt="" />
                 </div>
                 <Socials
-                    creator={creator}
+                    authorUsername={authorUsername}
                 />
             </div>
         </StyledCreatorHeader>
@@ -52,6 +49,7 @@ const StyledCreatorHeader = styled.header`
         margin: 0 auto;
         display: block;
         width: 150px;
+        height: 100px;
         position: relative;
         img {
             width: 100%;
@@ -71,12 +69,15 @@ const StyledCreatorHeader = styled.header`
         }
     }
     .info-container {
-        display: flex;
+        display: grid;
         width: 100%;
-        justify-content: space-evenly;
+        grid-template-columns: 33% 10px 33% 10px 33%;
         align-items: center;
         margin: 10px auto;
-        flex-wrap: wrap;
+         @media (max-width: 750px){
+            grid-template-columns: 1fr;
+            row-gap: 16px;
+        }
         h6 {
             margin: auto;
             font-size: 20px;
@@ -95,16 +96,12 @@ const StyledCreatorHeader = styled.header`
             max-width: 10px;
             @media (max-width: 750px){
                 width: 6px;
+                display: none;
             }
             img {
                 width: 100%;
                 height: 100%;
                 
-            }
-        }
-        #dot2 {
-            @media (max-width: 450px){
-                display: none;
             }
         }
     }

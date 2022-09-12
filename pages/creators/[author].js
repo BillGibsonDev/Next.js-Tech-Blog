@@ -17,7 +17,7 @@ const Creator =  ({creator}) => {
 
     useEffect(() => {
         window.scrollTo(0, 0);
-        const getCreator = () => {
+        const getArticles = () => {
             axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/${process.env.NEXT_PUBLIC_GET_POSTS_URL}`)
             .then(function(response){
                 setArticles(response.data);
@@ -26,7 +26,7 @@ const Creator =  ({creator}) => {
                 console.log(error);
             });
         };
-        getCreator(); 
+        getArticles(); 
     }, [ author ])
 
     const handleShowMore = () =>{
@@ -34,10 +34,16 @@ const Creator =  ({creator}) => {
       setValue(value + i);
     }
 
+    console.log(creator)
+
     return (
         <>
             <CreatorHeader
-                creator={JSON.stringify(creator)}
+                bio={creator[0].bio}
+                location={creator[0].location}
+                avatar={creator[0].avatar}
+                authorUsername={creator[0].authorUsername}
+                creator={creator[0].creator}
                 articles={articles}
             />
             <div className="blog">
