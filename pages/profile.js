@@ -1,21 +1,18 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-// components
-import Loader from '../../loaders/Loader';
-
 // styled
 import styled from 'styled-components';
-import * as pallette from '../../styled/ThemeVariables.js';
+import * as pallette from '../styled/ThemeVariables.js';
 
 // router
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 // redux
 import { useSelector } from 'react-redux';
 
 // functions
-import { useConfirmRole } from '../../functions/ConfirmRole';
+import { useConfirmRole } from '../functions/ConfirmRole';
 
 export default function ProfilePage() {
 

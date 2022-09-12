@@ -3,15 +3,12 @@ import axios from 'axios';
 
 // functions
 import { unauthorized } from '../functions/Unauthorized';
-import { useConfirmAdmin } from '../functions/ConfirmAdmin';
 
 // styled
 import styled from 'styled-components';
 import { StyledButton } from '../styled/StyledButton';
 import * as pallette from '../styled/ThemeVariables.js';
 
-// redux
-import { useSelector } from 'react-redux';
 
 const CreateUser = () => {
 
@@ -23,9 +20,6 @@ const CreateUser = () => {
 	const [ confirmEmail, setConfirmEmail ] = useState("");
 	const [joinDate, setJoinDate ] = useState("");
 
-	const user = useSelector((state) => state.user);
-
-	const confirm = useConfirmAdmin(user.role);
 
  	useEffect(() => {
 		const handleDate = () => {
