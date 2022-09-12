@@ -6,7 +6,7 @@ import Loader from '../../loaders/Loader';
 
 // styled
 import styled from 'styled-components';
-import * as pallette from '../../Styled/ThemeVariables.js';
+import * as pallette from '../../styled/ThemeVariables.js';
 
 // router
 import { Link } from 'react-router-dom';

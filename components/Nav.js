@@ -6,7 +6,7 @@ import * as pallette from '../styled/ThemeVariables.js';
 
 // public
 import Hamburger from '../public/hamburgerWhite2.png';
-
+import Image from 'next/image.js';
 const Nav = ({isLoggedIn}) => {
 
     const openNav = () => {
@@ -51,7 +51,7 @@ const Nav = ({isLoggedIn}) => {
                     </div>
                 }
             </div>
-            <img id='hamburger' src={Hamburger} onClick={() => { openNav() }} alt="hamburger menu"/>
+            <Image id='hamburger' src={Hamburger} layout="fill" onClick={() => { openNav() }} alt="hamburger menu"/>
         </StyledNav>
     )
 }

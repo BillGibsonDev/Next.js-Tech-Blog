@@ -7,6 +7,7 @@ import * as pallette from '../styled/ThemeVariables.js';
 
 // router
 import Link from 'next/link';
+import Image from 'next/image.js';
 
 const Blogsnip = ({ article }) => {
 
@@ -38,7 +39,7 @@ const Blogsnip = ({ article }) => {
             <div className="article-wrapper">
                 <div className="thumbnail">
                     <Link href={`/articles/${article.linkTitle}/${article._id}`}>
-                        <img src={article.thumbnail} alt={article.thumbnail} />
+                        <Image src={article.thumbnail} alt={article.thumbnail} layout='fill' />
                     </Link>
                 </div>
                 <div className="info-wrapper">
@@ -46,7 +47,7 @@ const Blogsnip = ({ article }) => {
                     <Link href={`/articles/${article._id}`}><a className="title">{article.postTitle}</a></Link>
                     <div className="info-container">
                         <div className="author-header">
-                            <img src={creator.avatar} alt="" />
+                            <Image src={creator.avatar} layout='fill' alt="" />
                             <Link href={`/creators/${article.authorUsername}`}>{article.author}</Link>
                         </div>
                         <h5 id="date">{splitDate}</h5>

@@ -6,6 +6,7 @@ import { marked } from 'marked';
 import Intro from '../../components/Intro';
 import Head from 'next/head'; 
 import Link from 'next/link';
+import Image from 'next/image.js';
 
 // styled
 import styled from 'styled-components';
@@ -63,7 +64,7 @@ const Article = ({article}) => {
               >
             </div>  
             <div className="bottom-author-container">
-              <img src={creator.avatar} alt="" />
+              <Image src={creator.avatar} layout="fill" alt="" />
               <div className="author-info-wrapper">
                 <Link href={`/creators/${article.authorUsername}`}>{article.author}</Link>
                 <p>{creator.bio}</p>

@@ -4,7 +4,7 @@ import * as pallette from '../styled/ThemeVariables.js';
 
 // components
 import Link from 'next/link';
-
+import Image from 'next/image.js';
 //images
 //import Edit from '../public/editIconWhite.png';
 
@@ -19,16 +19,16 @@ export default function Intro({article, splitDate, creator}) {
                     <div className="button-container">
                         {/* {
                             user.role === process.env.REACT_APP_ADMIN_SECRET || user.user === article.authorUsername 
-                            ? <Link href={`/EditPostPage/${article._id}`}><img id="edit" src={Edit} alt="" /></Link>
+                            ? <Link href={`/EditPostPage/${article._id}`}><Image id="edit" src={Edit} alt="" /></Link>
                             : <></>
                         } */}
                     </div> 
                 </div>
             </div>
-            <img id="thumbnail" src={article.thumbnail} alt="" />
+            <Image id="thumbnail" layout="fill" src={article.thumbnail} alt="" />
             <div className="info-container">
                 <div className="author-container">
-                    <img src={creator.avatar} alt="" />
+                    <Image src={creator.avatar} layout="fill" alt="" />
                     <Link href={`/creators/${article.authorUsername}`}>{article.author}</Link>
                 </div>
                 <h5>{splitDate}</h5>
