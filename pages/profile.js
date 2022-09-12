@@ -14,7 +14,7 @@ import { useConfirmRole } from '../functions/ConfirmRole';
 // redux
 import { useSelector } from 'react-redux';
 
-export default function ProfilePage() {
+export default function Profile() {
 
     const user = useSelector((state) => state.user);
 
