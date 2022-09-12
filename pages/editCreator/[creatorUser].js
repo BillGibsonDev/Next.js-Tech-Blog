@@ -3,8 +3,8 @@ import axios from 'axios';
 
 // styled
 import styled from 'styled-components';
-import { StyledButton } from '../../Styled/StyledButton';
-import * as pallette from '../../Styled/ThemeVariables.js';
+import { StyledButton } from '../../styled/StyledButton';
+import * as pallette from '../../styled/ThemeVariables.js';
 
 // functions
 import { unauthorized } from '../../functions/Unauthorized';
@@ -12,15 +12,7 @@ import { useConfirmAdmin } from '../../functions/ConfirmAdmin';
 
 import { useRouter } from 'next/router';
 
-// redux
-import { useSelector } from 'react-redux';
-
-// loader
-import Loader from '../../loaders/Loader';
-
 const EditCreator = () => {
-
-    const user = useSelector((state) => state.user);
 
     const router = useRouter();
     const { creatorUser } = router.query
@@ -28,26 +20,22 @@ const EditCreator = () => {
     const confirm  = useConfirmAdmin(user.role);
 
     const [ creator, setCreator ] = useState([]);
-    const [ isLoading, setLoading ] = useState(false);
 
     useEffect(() => {
         window.scrollTo(0, 0);
         const getCreator = () => {
-            setLoading(true);
             axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/${process.env.NEXT_PUBLIC_GET_CREATOR_URL}/${user.creatorUser }`)
             .then(function(response){
-                setLoading(false);
                 setCreator(response.data[0]);
             })
             .catch(function (error) {
-                setLoading(false);
                 console.log(error);
             });
         };
         if(confirm){
             getCreator();
         }
-    }, [ user, creatorUser , confirm ])
+    }, [ creatorUser , confirm ])
 
     const [ creatorName, setCreatorName ] = useState(creator.creator);
     const [ twitter, setTwitter] = useState(creator.twitter);
@@ -93,104 +81,101 @@ const EditCreator = () => {
 		<StyledRegister>
 			<h1>Update Creator</h1>
 			<div className="form-wrapper">
-                {
-                    isLoading
-                    ? <Loader/>
-                    : <>
-                        <div className="left-container">
-                            <label>Creator Name:</label>
-                            <input 
-                                defaultValue={creator.creator}
-                                type="text" 
-                                onChange={(event) => {
-                                    setCreatorName(event.target.value);
-                                }}
-                            />
-                            <label>Username:</label>
-                            <input 
-                                defaultValue={creator.authorUsername}
-                                type="text" 
-                                onChange={(event) => {
-                                    setAuthorUsername(event.target.value);
-                                }}
-                            />
-                            <label>Bio:</label>
-                            <input 
-                                defaultValue={creator.bio}
-                                type="text" 
-                                onChange={(event) => {
-                                    setBio(event.target.value);
-                                }}
-                            />
-                            <label>Location:</label>
-                            <input 
-                                defaultValue={creator.location}
-                                type="text" 
-                                onChange={(event) => {
-                                    setLocation(event.target.value);
-                                }}
-                            />
-                            <label>Avatar:</label>
-                            <input 
-                                defaultValue={creator.avatar}
-                                type="text" 
-                                onChange={(event) => {
-                                    setAvatar(event.target.value);
-                                }}
-                            />
-                        </div>
-                        <div className="right-container">
-                            <label>Twitter:</label>
-                            <input 
-                                defaultValue={creator.twitter}
-                                type="text" 
-                                onChange={(event) => {
-                                    setTwitter(event.target.value);
-                                }}
-                            />
-                            <label>Youtube</label>
-                            <input 
-                                defaultValue={creator.youtube}
-                                type="text" 
-                                onChange={(event) => {
-                                    setYoutube(event.target.value);
-                                }}
-                            />
-                            <label>Instagram:</label>
-                            <input 
-                                defaultValue={creator.instagram}
-                                type="text" 
-                                onChange={(event) => {
-                                    setInstagram(event.target.value);
-                                }}
-                            />
-                            <label>Linkedin:</label>
-                            <input 
-                                defaultValue={creator.linkedin}
-                                type="text" 
-                                onChange={(event) => {
-                                    setLinkedin(event.target.value);
-                                }}
-                            />
-                            <label>Github:</label>
-                            <input 
-                                defaultValue={creator.github}
-                                type="text" 
-                                onChange={(event) => {
-                                    setGithub(event.target.value);
-                                }}
-                            />
-                            <label>Other:</label>
-                            <input
-                                defaultValue={creator.other} 
-                                type="text" 
-                                onChange={(event) => {
-                                    setOther(event.target.value);
-                                }}
-                            />
-                        </div>
-                    </>
-                }
+                <>
+                    <div className="left-container">
+                        <label>Creator Name:</label>
+                        <input 
+                            defaultValue={creator.creator}
+                            type="text" 
+                            onChange={(event) => {
+                                setCreatorName(event.target.value);
+                            }}
+                        />
+                        <label>Username:</label>
+                        <input 
+                            defaultValue={creator.authorUsername}
+                            type="text" 
+                            onChange={(event) => {
+                                setAuthorUsername(event.target.value);
+                            }}
+                        />
+                        <label>Bio:</label>
+                        <input 
+                            defaultValue={creator.bio}
+                            type="text" 
+                            onChange={(event) => {
+                                setBio(event.target.value);
+                            }}
+                        />
+                        <label>Location:</label>
+                        <input 
+                            defaultValue={creator.location}
+                            type="text" 
+                            onChange={(event) => {
+                                setLocation(event.target.value);
+                            }}
+                        />
+                        <label>Avatar:</label>
+                        <input 
+                            defaultValue={creator.avatar}
+                            type="text" 
+                            onChange={(event) => {
+                                setAvatar(event.target.value);
+                            }}
+                        />
+                    </div>
+                    <div className="right-container">
+                        <label>Twitter:</label>
+                        <input 
+                            defaultValue={creator.twitter}
+                            type="text" 
+                            onChange={(event) => {
+                                setTwitter(event.target.value);
+                            }}
+                        />
+                        <label>Youtube</label>
+                        <input 
+                            defaultValue={creator.youtube}
+                            type="text" 
+                            onChange={(event) => {
+                                setYoutube(event.target.value);
+                            }}
+                        />
+                        <label>Instagram:</label>
+                        <input 
+                            defaultValue={creator.instagram}
+                            type="text" 
+                            onChange={(event) => {
+                                setInstagram(event.target.value);
+                            }}
+                        />
+                        <label>Linkedin:</label>
+                        <input 
+                            defaultValue={creator.linkedin}
+                            type="text" 
+                            onChange={(event) => {
+                                setLinkedin(event.target.value);
+                            }}
+                        />
+                        <label>Github:</label>
+                        <input 
+                            defaultValue={creator.github}
+                            type="text" 
+                            onChange={(event) => {
+                                setGithub(event.target.value);
+                            }}
+                        />
+                        <label>Other:</label>
+                        <input
+                            defaultValue={creator.other} 
+                            type="text" 
+                            onChange={(event) => {
+                                setOther(event.target.value);
+                            }}
+                        />
+                    </div>
+                </>
+                
             </div>
             {
                 user.role === process.env.NEXT_PUBLIC_ADMIN_SECRET 

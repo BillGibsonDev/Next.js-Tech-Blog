@@ -10,7 +10,7 @@ import * as pallette from '../../styled/ThemeVariables.js';
 import { useRouter } from 'next/router';
 
 // components
-import EditIntro from './components/EditIntro';
+import EditIntro from '../../components/EditIntro';
 
 const EditArticle = () => {
 
