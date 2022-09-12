@@ -14,7 +14,7 @@ import { useConfirmRole } from '../functions/ConfirmRole';
 // redux
 import { useSelector } from 'react-redux';
 
-export default function Profile() {
+const Profile = () => {
 
     const user = useSelector((state) => state.user);
 
@@ -22,10 +22,9 @@ export default function Profile() {
 
     const [ joinDate, setJoinDate ] = useState("");
 
-    let tokenPW = sessionStorage.getItem("tokenPW");
-	let tokenUser = sessionStorage.getItem("tokenUser");
-
     useEffect(() => {
+        let tokenPW = sessionStorage.getItem("tokenPW");
+	    let tokenUser = sessionStorage.getItem("tokenUser");
         const handleJoinDate = () => {
             axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/${process.env.NEXT_PUBLIC_LOGIN_URL}`, {
                 username: tokenUser,
@@ -214,3 +213,5 @@ const StyledProfilePage = styled.div`
         }
     }
 `;
+
+export default Profile
