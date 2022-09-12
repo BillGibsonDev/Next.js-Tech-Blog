@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 // styled
 import styled from 'styled-components';
@@ -7,7 +8,12 @@ import { useRouter } from 'next/router';
 
 import Head from 'next/head';
 
+import { useDispatch } from 'react-redux';
+import { getUser } from '../redux/actions/user';
+
 const Login = () => {
+
+	const dispatch = useDispatch();
 
 	const [ username, setUsername ] = useState('');
 	const [ password, setPassword ] = useState('');
@@ -37,7 +43,7 @@ const Login = () => {
 					password: password,
 				})
 				.then((response) => {
-					setRole(response.data);
+					dispatch(getUser(username, response.data));
 					router.push('/');
 				})
 				.catch((error) => {
