@@ -40,7 +40,7 @@ const Creator =  ({creator}) => {
             <Head>
                 <title>{`Tech Blog | ${creator[0].creator}`}</title>
                 <meta name="description" content={creator[0].bio} />
-                <meta property="og:url" content="https://dainty-trifle-b85068.netlify.app/" />
+                <meta property="og:url" content="https://next-js-tech-blog-c1ckshbvi-gibbybreakstech.vercel.app/" />
                 <meta property="og:site_name" content={`Tech Blog | ${creator[0].creator}`} />
                 <meta property="og:title" content={`Tech Blog | ${creator[0].creator}`} />
                 <meta property="og:description" content={creator[0].bio} />

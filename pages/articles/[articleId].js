@@ -39,7 +39,7 @@ const Article = ({article}) => {
         <Head>
           <title>{`Tech Blog | ${article.postTitle}`}</title>
           <meta name="description" content={article.content.slice(0, 100)} />
-          <meta property="og:url" content="https://dainty-trifle-b85068.netlify.app/" />
+          <meta property="og:url" content="https://next-js-tech-blog-c1ckshbvi-gibbybreakstech.vercel.app/" />
           <meta property="og:site_name" content="Tech Blog" />
           <meta property="og:title" content={article.postTitle} />
           <meta property="og:description" content={article.content.slice(0, 100)} />

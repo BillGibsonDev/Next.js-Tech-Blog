@@ -13,7 +13,7 @@ const Home = ({articles}) => {
     <StyledHomePage>
       <Head>
 				<title>{`Tech Blog`}</title>
-				<meta property="og:url" content="https://next-js-tech-blog.vercel.app/" />
+				<meta property="og:url" content="https://next-js-tech-blog-c1ckshbvi-gibbybreakstech.vercel.app/" />
 				<meta property="og:site_name" content="Tech Blog" />
 				<meta property="og:title" content={`Tech Blog`} />
 				<meta property="twitter:title" content={`Tech Blog`} />
