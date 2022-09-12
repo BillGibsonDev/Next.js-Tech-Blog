@@ -39,7 +39,7 @@ const Blogsnip = ({ article }) => {
             <div className="article-wrapper">
                 <div className="thumbnail">
                     <Link href={`/articles/${article.linkTitle}/${article._id}`}>
-                        <Image src={article.thumbnail} alt={article.thumbnail} layout='fill' />
+                        <Image src={article.thumbnail} alt={article.thumbnail} layout="intrinsic" width='100%;' height='100%;' />
                     </Link>
                 </div>
                 <div className="info-wrapper">
@@ -47,7 +47,7 @@ const Blogsnip = ({ article }) => {
                     <Link href={`/articles/${article._id}`}><a className="title">{article.postTitle}</a></Link>
                     <div className="info-container">
                         <div className="author-header">
-                            <Image src={creator.avatar} layout='fill' alt="" />
+                            <Image src={creator.avatar} width='30px;' layout="fill" height='30px;' alt="" />
                             <Link href={`/creators/${article.authorUsername}`}>{article.author}</Link>
                         </div>
                         <h5 id="date">{splitDate}</h5>
@@ -81,6 +81,7 @@ const StyledSnip = styled.div`
             flex-direction: column;
         }
         .thumbnail {
+            position: relative;
             width: 50%;
             height: 100%;
             @media (max-width: 750px){
@@ -133,6 +134,7 @@ const StyledSnip = styled.div`
                     display: flex;
                     justify-content: space-between;
                     align-items: center;
+                    position: relative;
                     img {
                         height: 30px;
                         width: 30px;

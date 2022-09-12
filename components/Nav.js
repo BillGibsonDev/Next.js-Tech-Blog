@@ -51,7 +51,7 @@ const Nav = ({isLoggedIn}) => {
                     </div>
                 }
             </div>
-            <Image id='hamburger' src={Hamburger} layout="fill" onClick={() => { openNav() }} alt="hamburger menu"/>
+            <Image id='hamburger' src={Hamburger} width='30px;' height='30px;' onClick={() => { openNav() }} alt="hamburger menu"/>
         </StyledNav>
     )
 }
