@@ -27,7 +27,7 @@ const Nav = () => {
         <StyledNav>
             <Link href="/"><a className="logo">Tech Blog</a></Link>
             {
-                user === []
+                user.user === "guest"
                 ? <nav>
                     <Link href="/">Home</Link>
                     <Link href="/about">About</Link>
@@ -42,7 +42,7 @@ const Nav = () => {
             <div id="myNav" className="overlay">
                 <button onClick={() => { closeNav() }}>&times;</button>
                 {
-                    user === []
+                    user.user === "guest"
                     ? <div className="overlayContent" onClick={() => { closeNav() }}>
                         <Link href="/" onClick={() => { closeNav() }}>Home</Link>
                         <Link href="/about">About</Link>
