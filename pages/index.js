@@ -5,7 +5,7 @@ import styled from "styled-components";
 
 // components
 import Blogsnip from '../components/Blogsnip';
-
+import HomePageLoader from '../components/HomePageLoader';
 import Head from "next/head";
 
 const Home = ({articles}) => {
@@ -28,8 +28,8 @@ const Home = ({articles}) => {
       <div className="blog">
         <div className="blog-wrapper">
           {
-            articles === undefined 
-            ? <></>
+            !articles
+            ? <HomePageLoader />
             : articles.slice().reverse().map((article, index) => {
               return(
                 <Blogsnip
@@ -51,31 +51,31 @@ const Home = ({articles}) => {
 }
 
 const StyledHomePage = styled.div`
-    height: 100%;
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  max-width: 875px;
+  #showmore {
+    height: 35px;
+    width: 200px;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  .blog {
+    display: flex;
     width: 100%;
+    height: 100%;
     margin: 0 auto;
-    max-width: 875px;
-    #showmore {
-      height: 35px;
-      width: 200px;
-      font-size: 16px;
-      font-weight: 700;
-      letter-spacing: 1px;
+    .blog-wrapper {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      min-height: 100%;
+      margin: 0 auto;
+      border-radius: 12px;
     }
-    .blog {
-        display: flex;
-        width: 100%;
-        height: 100%;
-        margin: 0 auto;
-        .blog-wrapper {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-            min-height: 100%;
-            margin: 0 auto;
-            border-radius: 12px;
-        }
-    }
+  }
 `;
 
 export const getServerSideProps = async () => {

@@ -10,7 +10,7 @@ import { Provider } from "react-redux";
 import { route } from 'next/dist/server/router';
 import { useRouter } from 'next/router'
 import { useEffect } from 'react';
-import * as ga from './lib/analytics';
+import * as ga from '../lib/analytics';
 
 function MyApp({ Component, pageProps }) {
 

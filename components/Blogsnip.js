@@ -88,7 +88,7 @@ const StyledSnip = styled.div`
             height: 100%;
             @media (max-width: 750px){
                 width: 90%;
-                height: 30vh;
+                height: 25vh;
                 margin: auto;
             }
             a {
@@ -111,6 +111,7 @@ const StyledSnip = styled.div`
             @media (max-width: 750px){
                 width: 90%;
                 margin: auto;
+                height: auto;
             }
             a {
                 margin: 6px 0;

@@ -4,9 +4,9 @@ import axios from 'axios';
 // components
 import Blogsnip from '../../components/Blogsnip';
 import CreatorHeader from '../../components/CreatorHeader.js';
-
 import { useRouter } from 'next/router';
 import Head from 'next/head';
+import CreatorPageLoader from '../../components/CreatorPageLoader';
 
 const Creator =  ({creator}) => {
 
@@ -51,32 +51,38 @@ const Creator =  ({creator}) => {
                 <meta name="twitter:card" content="summary" />
                 <meta name="twitter:site" content="@gibbybreakstech" />
             </Head>
-            <CreatorHeader
-                bio={creator[0].bio}
-                location={creator[0].location}
-                avatar={creator[0].avatar}
-                authorUsername={creator[0].authorUsername}
-                creator={creator[0].creator}
-                articles={articles}
-            />
-            <div className="blog">
-                <div className="blogWrapper">
-                    {
-                        articles.filter(articles => articles.authorUsername === `${author}`).slice().reverse().map((article, index) => {
-                            return (
-                                <Blogsnip
-                                    article={article}
-                                    key={index}
-                                />
-                            )
-                        })
-                    }
-                </div>
-            </div>
             {
-                articles.filter(articles => articles.authorUsername === `${author}`).length >= 10 
-                ? <button id="showmore" onClick={() => { handleShowMore() }}>Show More</button>
-                : <></>
+                !creator
+                ? <CreatorPageLoader />
+                : <>
+                    <CreatorHeader
+                        bio={creator[0].bio}
+                        location={creator[0].location}
+                        avatar={creator[0].avatar}
+                        authorUsername={creator[0].authorUsername}
+                        creator={creator[0].creator}
+                        articles={articles}
+                    />
+                    <div className="blog">
+                        <div className="blogWrapper">
+                            {
+                                articles.filter(articles => articles.authorUsername === `${author}`).slice().reverse().map((article, index) => {
+                                    return (
+                                        <Blogsnip
+                                            article={article}
+                                            key={index}
+                                        />
+                                    )
+                                })
+                            }
+                        </div>
+                    </div>
+                    {
+                        articles.filter(articles => articles.authorUsername === `${author}`).length >= 10 
+                        ? <button id="showmore" onClick={() => { handleShowMore() }}>Show More</button>
+                        : <></>
+                    }
+                </>
             }
         </>
     )
