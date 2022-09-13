@@ -1,20 +1,29 @@
+import { useEffect } from 'react';
+
+// styules
 import '../styles/globals.css'
 
 // components
 import Layout from '../components/layout';
 
+// next components
+import { route } from 'next/dist/server/router';
+import { useRouter } from 'next/router'
+
 // redux
 import { wrapper, store } from "../store/store";
 import { Provider } from "react-redux";
 
-import { route } from 'next/dist/server/router';
-import { useRouter } from 'next/router'
-import { useEffect } from 'react';
+// google analytics
 import * as ga from '../lib/analytics';
 
-function MyApp({ Component, pageProps }) {
+// loading bar -nprogress
+import dynamic from 'next/dynamic';
+ const ProgressBar = dynamic(() => import('../components/ProgressBar'), { ssr: false });
 
-const router = useRouter()
+function MyApp({ Component, pageProps }) {
+  
+  const router = useRouter()
 
   useEffect(() => {
     const handleRouteChange = (url) => {
@@ -30,6 +39,7 @@ const router = useRouter()
     <Provider store={store}>
       <Layout>
         <Component {...pageProps} key={route}/>
+        <ProgressBar />
       </Layout>
     </Provider>
   )

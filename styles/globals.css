@@ -29,3 +29,8 @@ h1, h2, h3, h4,h5,h6 {
     transition: 0.2s;
     transform: scale(1.01);
 }
+
+#nprogress .bar {
+    background: #6170F7 !important;
+    height: 3px !important;
+}
