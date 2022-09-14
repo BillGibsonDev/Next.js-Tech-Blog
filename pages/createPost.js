@@ -153,6 +153,7 @@ const StyledCreatePage = styled.div`
     h1 {
         font-size: 3em;
         margin: 1em 0;
+        color: ${pallette.titleColor}
     }
     .form-wrapper {
         display: flex;
@@ -186,20 +187,18 @@ const StyledCreatePage = styled.div`
                 font-size: 1.5em;
                 margin: 10px;
                 height: 100%;
-                width: 90%auto;
+                width: auto;
+                color: white;
                 textarea {
-                    width: 100%;
+                    width: auto;
                     height: 300px;
-                    @media (max-width: 450px){
-                        width: 90%;
-                    }
                 }
             }
         }
     }
     .button-wrapper {
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
         width: 100%;
         margin-bottom: 10px;
         #clear {

@@ -4,8 +4,8 @@ export const getUser = ( username, role ) => {
   return {
     type: GET_USER,
     payload: {
-        username,
-        role
+      username,
+      role
     }
   }
 };

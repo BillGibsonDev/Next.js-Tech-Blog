@@ -7,7 +7,7 @@ import * as pallette from '../styled/ThemeVariables.js';
 
 // router
 import Link from 'next/link';
-import Image from 'next/image.js';
+import Image from 'next/image';
 
 const Blogsnip = ({ article }) => {
 
@@ -38,7 +38,7 @@ const Blogsnip = ({ article }) => {
         <StyledSnip>
             <div className="article-wrapper">
                 <div className="thumbnail">
-                    <Link href={`/articles/${article.linkTitle}/${article._id}`}>
+                    <Link href={`/articles/${article._id}`}>
                         <Image src={article.thumbnail} alt={article.postTitle} layout="fill" />
                     </Link>
                 </div>
@@ -110,8 +110,8 @@ const StyledSnip = styled.div`
             margin: auto auto auto 10px;
             @media (max-width: 750px){
                 width: 90%;
+                height: 40%;
                 margin: auto;
-                height: auto;
             }
             a {
                 margin: 6px 0;

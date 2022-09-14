@@ -4,10 +4,11 @@ import axios from 'axios';
 // styled
 import styled from 'styled-components';
 
+// components
 import { useRouter } from 'next/router';
-
 import Head from 'next/head';
 
+// redux
 import { useDispatch } from 'react-redux';
 import { getUser } from '../redux/actions/user';
 
@@ -15,9 +16,24 @@ const Login = () => {
 
 	const dispatch = useDispatch();
 
+	const router = useRouter();
+
 	const [ username, setUsername ] = useState('');
 	const [ password, setPassword ] = useState('');
 	const [ lastLogin, setLastLogin ] = useState('');
+
+	const handleTokens = (password, username) => {
+		let tokenPW = sessionStorage.getItem("tokenPW");
+		let tokenUser = sessionStorage.getItem("tokenUser");
+		if (tokenPW === null) {
+			router.push("/");
+		} else {
+			tokenPW = password;
+			tokenUser = username;
+		}
+		sessionStorage.setItem("tokenPW", tokenPW);
+		sessionStorage.setItem("tokenUser", tokenUser);
+	}
 
 	useEffect(() =>{
 		const handleDate = () => {
@@ -28,8 +44,6 @@ const Login = () => {
 		handleDate();
 	},[])
 
-	const router = useRouter();
-
 	const handleLogin = () => {
 		axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/${process.env.NEXT_PUBLIC_LOGIN_URL}`, {
 			username: username,
@@ -38,6 +52,7 @@ const Login = () => {
 		})
 		.then(function(response){
 			if (response.data === "LOGGED IN"){
+				handleTokens(password, username)
 				axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/${process.env.NEXT_PUBLIC_SET_ROLE_URL}`, {
 					username: username, 
 					password: password,
@@ -64,7 +79,7 @@ const Login = () => {
 		<StyledLoginPage>
 			<Head>
 				<title>{`Tech Blog | Login`}</title>
-				<meta property="og:url" content="https://dainty-trifle-b85068.netlify.app/" />
+				<meta property="og:url" content="https://next-js-tech-blog-8p60ttybu-gibbybreakstech.vercel.app/" />
 				<meta property="og:site_name" content="Tech Blog" />
 				<meta property="og:title" content={`Tech Blog | Login`} />
 				<meta property="twitter:title" content={`Tech Blog | Login`} />

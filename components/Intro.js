@@ -22,13 +22,11 @@ export default function Intro({article, splitDate, creator}) {
                 <h4>{article.postTitle}</h4>
                 <div className="icon-container">
                     <Link href={`/tags/${article.tag}`}>{article.tag}</Link>
-                    <div className="button-container">
-                        {
-                            user.role === process.env.NEXT_PUBLIC_ADMIN_SECRET || user.user === article.authorUsername 
-                            ? <Link href={`/EditPostPage/${article._id}`}><Image src={Edit} alt="" /></Link>
-                            : <></>
-                        }
-                    </div> 
+                    {
+                        user.role === process.env.NEXT_PUBLIC_ADMIN_SECRET || user.user === article.authorUsername 
+                        ? <Link href={`/editArticle/${article._id}`}><a className="edit-icon"><Image layout='fill' src={Edit} alt="" /></a></Link>
+                        : <></>
+                    }
                 </div>
             </div>
             <div className="thumbnail-container">
@@ -72,6 +70,7 @@ const StyledIntro = styled.section`
             justify-content: space-between;
             width: 300px;
             margin-bottom: 10px;
+            position: relative;
             @media (max-width: 750px){
                 width: 100%;
                 margin-bottom: 20px; 
@@ -84,18 +83,18 @@ const StyledIntro = styled.section`
                 &:hover {
                     text-decoration: underline;
                 }
-                #edit {
-                    width: 25px;
-                    margin-right: 20px;
-                }
             }
-            .button-container {
-                display: flex;
+            .edit-icon {
+                display: block;
+                position: relative;
+                width: 35px;
+                height: 35px;
                 img {
-                    width: 25px;
-                    cursor: pointer;
+                    width: 35px;
+                    height: 35px;
                 }
             }
+            
         }
     }
     .thumbnail-container {
@@ -105,8 +104,11 @@ const StyledIntro = styled.section`
         height: 100%;
         min-height: 500px;
         position: relative;
-         @media (max-width: 750px){
+        @media (max-width: 750px){
             min-height: 300px;
+        }
+        @media (max-width: 750px){
+            min-height: 200px;
         }
         img {
             width: 100%;

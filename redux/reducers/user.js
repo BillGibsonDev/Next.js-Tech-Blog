@@ -16,7 +16,7 @@ const reducer = (user = initialState, action) => {
       return {
         ...user
       };
-  }
+    }
 };
 
 export default reducer;

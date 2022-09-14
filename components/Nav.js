@@ -36,7 +36,7 @@ const Nav = () => {
                 : <nav>
                     <Link href="/">Home</Link>
                     <Link href="/profile">Profile</Link>
-                    <Link href="/" onClick={() => { logout() }}>Sign Out</Link>
+                    <Link href="/" onClick={() => { HandleLogout("guest", "guest") }}>Sign Out</Link>
                 </nav>
             }
             <div id="myNav" className="overlay">
@@ -53,7 +53,7 @@ const Nav = () => {
                         <Link href="/about">About</Link>
                         <Link href="/contact">Contact</Link>
                         <Link href="/profile" onClick={() => { closeNav() }}>Profile</Link>
-                        <Link href="/" onClick={()=>{ closeNav(); logout(); }}>Sign Out</Link>
+                        <Link href="/" onClick={()=>{ closeNav(); HandleLogout("guest", "guest"); }}>Sign Out</Link>
                     </div>
                 }
             </div>

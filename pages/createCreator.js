@@ -158,7 +158,6 @@ const StyledRegister = styled.div`
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    background: white;
     min-height: 80vh;
     width: 100%;
     max-width: 875px;
@@ -169,7 +168,7 @@ const StyledRegister = styled.div`
 	}
 	h1 {
 		font-size: 3em;
-		color: ${pallette.accentColor2};
+		color: ${pallette.titleColor};
         margin-bottom: 40px;
     }
 	.form-wrapper {
@@ -183,6 +182,7 @@ const StyledRegister = styled.div`
         }
         label {
             font-weight: bold;
+            color: white;
             @media (max-width: 1150px){
                 font-size: 1.2em;
             }

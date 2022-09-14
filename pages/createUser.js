@@ -65,58 +65,58 @@ const CreateUser = () => {
 	return (
 		<StyledRegister>
 			<h1>Register User</h1>
-				<div className="form-wrapper">
-					<label>Role:</label>
-					<select
-						type="text" 
-						onChange={(event) => {
-							setUserRole(event.target.value);
-						}}
-					>
-						<option value={process.env.NEXT_PUBLIC_CREATOR_SECRET}>Creator</option>
-						<option value={process.env.NEXT_PUBLIC_ADMIN_SECRET}>Admin</option>
-					</select>
-					<label>Username:</label>
-					<input 
-						type="text" 
-						onChange={(event) => {
-							setUsername(event.target.value);
-						}}
-					/>
-					<label>Email:</label>
-					<input 
-						type="email" 
-						onChange={(event) => {
-							setEmail(event.target.value);
-						}}
-					/>
-					<label>Retype Email:</label>
-					<input 
-						type="email" 
-						onChange={(event) => {
-							setConfirmEmail(event.target.value);
-						}}
-					/>
-					<label>Password:</label>
-					<input 
-						type="text" 
-						onChange={(event) => {
-							setPassword(event.target.value);
-						}}
-					/>
-                    <label>Retype Password:</label>
-					<input 
-						type="text" 
-						onChange={(event) => {
-							setConfirmPassword(event.target.value);
-						}}
-					/>
-					{
-                        user.role === process.env.NEXT_PUBLIC_ADMIN_SECRET 
-						? <button className="button" type="submit" onClick={()=>{registerUser();}}>Create User</button>
-                        : <button className="button" type="submit" onClick={()=>{unauthorized();}}>Create User</button>
-                    }
-				</div>
+			<div className="form-wrapper">
+				<label>Role:</label>
+				<select
+					type="text" 
+					onChange={(event) => {
+						setUserRole(event.target.value);
+					}}
+				>
+					<option value={process.env.NEXT_PUBLIC_CREATOR_SECRET}>Creator</option>
+					<option value={process.env.NEXT_PUBLIC_ADMIN_SECRET}>Admin</option>
+				</select>
+				<label>Username:</label>
+				<input 
+					type="text" 
+					onChange={(event) => {
+						setUsername(event.target.value);
+					}}
+				/>
+				<label>Email:</label>
+				<input 
+					type="email" 
+					onChange={(event) => {
+						setEmail(event.target.value);
+					}}
+				/>
+				<label>Retype Email:</label>
+				<input 
+					type="email" 
+					onChange={(event) => {
+						setConfirmEmail(event.target.value);
+					}}
+				/>
+				<label>Password:</label>
+				<input 
+					type="text" 
+					onChange={(event) => {
+						setPassword(event.target.value);
+					}}
+				/>
+				<label>Retype Password:</label>
+				<input 
+					type="text" 
+					onChange={(event) => {
+						setConfirmPassword(event.target.value);
+					}}
+				/>
+				{
+					user.role === process.env.NEXT_PUBLIC_ADMIN_SECRET 
+					? <button className="button" type="submit" onClick={()=>{registerUser();}}>Create User</button>
+					: <button className="button" type="submit" onClick={()=>{unauthorized();}}>Create User</button>
+				}
+			</div>
 		</StyledRegister>
 	)
 }
@@ -126,7 +126,6 @@ const StyledRegister = styled.div`
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
-	background: white;
 	height: 80vh;
 	width: 100%;
 	max-width: 875px;
@@ -137,7 +136,7 @@ const StyledRegister = styled.div`
 	}
 	h1 {
 		font-size: 3em;
-		color: ${pallette.accentColor2};
+		color: ${pallette.titleColor};
         margin-bottom: 40px;
     }
 	.form-wrapper {
@@ -147,6 +146,7 @@ const StyledRegister = styled.div`
 		align-items: center;
 		label {
 			font-weight: bold;
+			color: white;
 			@media (max-width: 1150px){
 				font-size: 1.2em;
 			}

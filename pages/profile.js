@@ -14,7 +14,7 @@ import { useConfirmRole } from '../functions/ConfirmRole';
 // redux
 import { useSelector } from 'react-redux';
 
-const Profile = () => {
+const Profile = ({articles}) => {
 
     const user = useSelector((state) => state.user);
 
@@ -23,30 +23,31 @@ const Profile = () => {
     const [ joinDate, setJoinDate ] = useState("");
 
     useEffect(() => {
-        let tokenPW = sessionStorage.getItem("tokenPW");
-	    let tokenUser = sessionStorage.getItem("tokenUser");
-        const handleJoinDate = () => {
-            axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/${process.env.NEXT_PUBLIC_LOGIN_URL}`, {
-                username: tokenUser,
-                password: tokenPW,
-            })
-            .then(function(response){
-                if (response.data === "LOGGED IN"){
-                    axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/${process.env.RNEXT_PUBLIC_GET_DATE_URL}`, {
-                        username: tokenUser, 
-                        password: tokenPW,
-                    })
-                    .then((response) => {
-                        setJoinDate(response.data)
-                    })
-                }
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
+        if(confirm){
+            let tokenPW = sessionStorage.getItem("tokenPW");
+            let tokenUser = sessionStorage.getItem("tokenUser");
+            const handleJoinDate = () => {
+                axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/${process.env.NEXT_PUBLIC_LOGIN_URL}`, {
+                    username: tokenUser,
+                    password: tokenPW,
+                })
+                .then(function(response){
+                    if (response.data === "LOGGED IN"){
+                        axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/${process.env.NEXT_PUBLIC_GET_DATE_URL}`, {
+                            username: tokenUser, 
+                            password: tokenPW,
+                        })
+                        .then((response) => {
+                            setJoinDate(response.data)
+                        })
+                    }
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+            }
+            handleJoinDate();
         }
-        handleJoinDate();
-        setLoading(false);
     }, [ confirm ])
 
     return (
@@ -63,13 +64,13 @@ const Profile = () => {
                 ? <div className="creator-dashboard">
                     <h3>Creator Dashboard</h3>
                     <div className="link-container">
-                        <Link to="/CreatePostPage">Create Post</Link>
-                        <Link to={`/edit-creator/${user.user}`}>Edit Creator</Link>
+                        <Link href="/createPost">Create Post</Link>
+                        <Link href={`/editCreator/${user.user}`}>Edit Creator</Link>
                         {
                             user.role === process.env.NEXT_PUBLIC_ADMIN_SECRET 
                             ?  <>
-                                <Link to="/CreateUser">Create User</Link>
-                                <Link to="/CreateCreator">Create Creator</Link>
+                                <Link href="/createUser">Create User</Link>
+                                <Link href="/createCreator">Create Creator</Link>
                             </>
                             : <></>
                         }
@@ -80,11 +81,11 @@ const Profile = () => {
                         ? <p>No Articles Found</p>
                         : <div className="article-wrapper" > 
                             {
-                                articles.filter(articles => articles.authorUsername === `${user.user}`).map((article, key) => {
+                                articles.filter(articles => articles.authorUsername === `${user.user}`).slice().reverse().map((article, key) => {
                                     return (
                                         <div className="article-container" key={key}>
                                             <h5>{article.postDate}</h5>
-                                            <Link to={`/post/${article.linkTitle}/${article._id}`} key={key}>{article.postTitle}</Link>
+                                            <Link href={`/articles/${article._id}`}>{article.postTitle}</Link>
                                         </div>
                                     )
                                 })
@@ -97,6 +98,16 @@ const Profile = () => {
         </StyledProfilePage>
     )
 }
+
+export const getStaticProps = async () => {
+  const data = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/${process.env.NEXT_PUBLIC_GET_POSTS_URL}`)
+  return {
+    props: {
+      articles: data.data,
+    },
+  }
+}
+
 
 const StyledProfilePage = styled.div`
     width: 100%;

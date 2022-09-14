@@ -41,8 +41,10 @@ const EditArticle = () => {
                 console.log(error);
             });
         }
-        handlePost(articleId);
-    }, [ articleId ])
+        if(confirm){
+            handlePost(articleId);
+        }
+    }, [ articleId, confirm ])
 
     const [ postTitle, setPostTitle ] = useState(article.postTitle);
     const [ linkTitle, setLinkTitle ] = useState(article.linkTitle);
