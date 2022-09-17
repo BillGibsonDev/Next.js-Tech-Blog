@@ -34,7 +34,7 @@ const Article = ({article}) => {
         handleCreator();
       }
     }, [article])
-    
+
     return (
       <StyledArticle>
         <Head>
@@ -139,13 +139,17 @@ const StyledArticle = styled.div`
       }
       h6 {
         color: ${pallette.titleColor};
-        margin: 10px 0 6px 0;
+        margin: 100px 0 6px 0;
         font-size: 1.5rem;
+        @media (max-width: 850px){
+          margin-top: 60px;
+        }
       }
       code {
         display: flex;
-        background: white;
-        padding: 10px;
+        background: #3a3a3a;
+        color: white;
+        padding: 30px;
         font-size: 1rem;
         margin: 10px 0;
         white-space: pre-wrap;
