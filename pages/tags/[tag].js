@@ -35,7 +35,7 @@ export default function TagsPage ({articles}) {
                         </div>
                         : <>
                             {
-                                articles.filter(articles => articles.tag === `${tag}`).slice(0, value).map((article, index) =>  {
+                                articles.filter(articles => articles.tag === `${tag}`).slice(0, value).reverse().map((article, index) =>  {
                                     return(
                                         <Blogsnip
                                             article={article}

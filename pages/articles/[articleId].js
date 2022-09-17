@@ -153,6 +153,7 @@ const StyledArticle = styled.div`
         font-size: 1rem;
         margin: 10px 0;
         white-space: pre-wrap;
+        overflow-x: auto;
       }
     }
     .bottom-author-container {
