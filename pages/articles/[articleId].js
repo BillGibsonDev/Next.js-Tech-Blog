@@ -82,13 +82,13 @@ const Article = ({article}) => {
 }
 
 export const getServerSideProps = async ({params}) => {
-    const articleId = params.articleId;
-    const articleData = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/${process.env.NEXT_PUBLIC_GET_POST_URL}/${articleId}`);
+  const articleId = params.articleId;
+  const articleData = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/${process.env.NEXT_PUBLIC_GET_POST_URL}/${articleId}`);
    return {
-        props: {
-          article: articleData.data,
-        },
-    }
+    props: {
+      article: articleData.data,
+    },
+  }
 }
 
 const StyledArticle = styled.div`
