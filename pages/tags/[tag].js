@@ -9,6 +9,8 @@ import Filter from '../../components/Filter';
 
 import { useRouter } from 'next/router';
 
+import { motion } from 'framer-motion';
+
 export default function TagsPage ({articles}) {
 
     const router = useRouter();
@@ -28,6 +30,17 @@ export default function TagsPage ({articles}) {
             <Filter />
             <div className="blog">
                 <div className="blog-wrapper">
+                    <motion.div initial="hidden" animate="visible" exit="hidden"
+                        variants={{
+                        hidden: {
+                            scale: .8,
+                            opacity: 0
+                        },
+                        visible: {
+                            scale: 1,
+                            opacity: 1
+                        },
+                    }}>
                     { 
                         articles.filter(post => post.tag === `${tag}`).length === 0 
                         ? <div className="placeholder">
@@ -46,6 +59,7 @@ export default function TagsPage ({articles}) {
                             }
                         </>
                     }
+                    </motion.div>
                 </div>
             </div>
             {

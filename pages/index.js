@@ -8,6 +8,9 @@ import Blogsnip from '../components/Blogsnip';
 import HomePageLoader from '../components/HomePageLoader';
 import Head from "next/head";
 
+import { motion } from "framer-motion";
+
+
 const Home = ({articles}) => {
   return (
     <StyledHomePage>
@@ -27,6 +30,17 @@ const Home = ({articles}) => {
       </Head>
       <div className="blog">
         <div className="blog-wrapper">
+          <motion.div initial="hidden" animate="visible" exit="hidden"
+          variants={{
+            hidden: {
+              scale: .8,
+              opacity: 0
+            },
+            visible: {
+              scale: 1,
+              opacity: 1
+            },
+          }}>
           {
             !articles
             ? <HomePageLoader />
@@ -39,6 +53,7 @@ const Home = ({articles}) => {
               )
             })
           }
+          </motion.div>
         </div>
       </div>
       {

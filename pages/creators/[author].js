@@ -8,6 +8,8 @@ import { useRouter } from 'next/router';
 import Head from 'next/head';
 import CreatorPageLoader from '../../components/CreatorPageLoader';
 
+import { motion } from 'framer-motion'; 
+
 const Creator =  ({creator}) => {
 
     const router = useRouter();
@@ -65,16 +67,28 @@ const Creator =  ({creator}) => {
                     />
                     <div className="blog">
                         <div className="blogWrapper">
-                            {
-                                articles.filter(articles => articles.authorUsername === `${author}`).slice().reverse().map((article, index) => {
-                                    return (
-                                        <Blogsnip
-                                            article={article}
-                                            key={index}
-                                        />
-                                    )
-                                })
-                            }
+                            <motion.div initial="hidden" animate="visible" exit="hidden"
+                                variants={{
+                                hidden: {
+                                    scale: .8,
+                                    opacity: 0
+                                },
+                                visible: {
+                                    scale: 1,
+                                    opacity: 1
+                                },
+                                }}>
+                                {
+                                    articles.filter(articles => articles.authorUsername === `${author}`).slice().reverse().map((article, index) => {
+                                        return (
+                                            <Blogsnip
+                                                article={article}
+                                                key={index}
+                                            />
+                                        )
+                                    })
+                                }
+                            </motion.div>
                         </div>
                     </div>
                     {

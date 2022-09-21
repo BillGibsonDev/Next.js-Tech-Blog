@@ -13,6 +13,8 @@ import ArticlePageLoader from '../../components/ArticlePageLoader';
 import styled from 'styled-components';
 import * as pallette from '../../styled/ThemeVariables';
 
+import { motion } from 'framer-motion'; 
+
 const Article = ({article}) => {
 
     const [ splitDate, setSplitDate ] = useState('');
@@ -55,6 +57,17 @@ const Article = ({article}) => {
           !article
           ? <ArticlePageLoader />
           :<div className="article-content">
+            <motion.div initial="hidden" animate="visible" exit="hidden"
+              variants={{
+                hidden: {
+                  scale: .8,
+                  opacity: 0
+                },
+                visible: {
+                  scale: 1,
+                  opacity: 1
+                },
+              }}>
               <Intro 
                 article={article}
                 creator={creator}
@@ -75,6 +88,7 @@ const Article = ({article}) => {
                 <p>{creator.bio}</p>
               </div>
             </div>
+            </motion.div>
           </div>
         }
       </StyledArticle>
