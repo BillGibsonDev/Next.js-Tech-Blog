@@ -58,6 +58,7 @@ const Article = ({article}) => {
           ? <ArticlePageLoader />
           :<div className="article-content">
             <motion.div initial="hidden" animate="visible" exit="hidden"
+              transition={{ ease: "easeOut", duration: 1 }}
               variants={{
                 hidden: {
                   scale: .8,

@@ -68,6 +68,7 @@ const Creator =  ({creator}) => {
                     <div className="blog">
                         <div className="blogWrapper">
                             <motion.div initial="hidden" animate="visible" exit="hidden"
+                                transition={{ ease: "easeOut", duration: 1 }}
                                 variants={{
                                 hidden: {
                                     scale: .8,

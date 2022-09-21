@@ -31,6 +31,7 @@ const Home = ({articles}) => {
       <div className="blog">
         <div className="blog-wrapper">
           <motion.div initial="hidden" animate="visible" exit="hidden"
+          transition={{ ease: "easeOut", duration: 1 }}
           variants={{
             hidden: {
               scale: .8,
