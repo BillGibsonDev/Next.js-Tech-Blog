@@ -63,7 +63,7 @@ const Blogsnip = ({ article }) => {
 export default Blogsnip
 
 const StyledSnip = styled.div`
-    height: 30vh;
+    height: 25vh;
     display: flex;
     justify-content: space-between;
     margin: 2em auto;
@@ -84,7 +84,7 @@ const StyledSnip = styled.div`
         }
         .thumbnail {
             position: relative;
-            width: 50%;
+            width: 40%;
             height: 100%;
             @media (max-width: 750px){
                 width: 90%;
@@ -105,9 +105,10 @@ const StyledSnip = styled.div`
         .info-wrapper {
             display: flex;
             flex-direction: column;
-            width: 50%;
-            height: 70%;
+            width: 60%;
+            height: 100%;
             margin: auto auto auto 10px;
+            justify-content: center;
             @media (max-width: 750px){
                 width: 90%;
                 height: 40%;
