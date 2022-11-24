@@ -3,13 +3,13 @@ import axios from 'axios';
 
 // styled
 import styled from 'styled-components';
-import * as pallette from '../styled/ThemeVariables.js';
+import * as pallette from '../../styled/ThemeVariables.js';
 
 // router
 import Link from 'next/link';
 
 // functions
-import { useConfirmRole } from '../functions/ConfirmRole';
+import { useConfirmRole } from '../../functions/ConfirmRole';
 
 // redux
 import { useSelector } from 'react-redux';
