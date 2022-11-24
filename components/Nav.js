@@ -35,7 +35,7 @@ const Nav = () => {
                 </nav>
                 : <nav>
                     <Link href="/">Home</Link>
-                    <Link href="/profile">Profile</Link>
+                    <Link href={`/profile/${user.user}`}>Profile</Link>
                     <Link href="/" onClick={() => { HandleLogout("guest", "guest") }}>Sign Out</Link>
                 </nav>
             }
@@ -52,7 +52,7 @@ const Nav = () => {
                         <Link href="/" onClick={() => { closeNav() }}>Home</Link>
                         <Link href="/about">About</Link>
                         <Link href="/contact">Contact</Link>
-                        <Link href="/profile" onClick={() => { closeNav() }}>Profile</Link>
+                        <Link href={`/profile/${user.user}`} onClick={() => { closeNav() }}>Profile</Link>
                         <Link href="/" onClick={()=>{ closeNav(); HandleLogout("guest", "guest"); }}>Sign Out</Link>
                     </div>
                 }

@@ -99,13 +99,14 @@ const Profile = ({articles}) => {
     )
 }
 
-export const getStaticProps = async () => {
-  const data = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/${process.env.NEXT_PUBLIC_GET_POSTS_URL}`)
-  return {
-    props: {
-      articles: data.data,
-    },
-  }
+export const getServerSideProps = async ({params}) => {
+    const profile = params.user;
+    const data = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/${process.env.NEXT_PUBLIC_GET_POSTS_URL}`)
+    return {
+        props: {
+            articles: data.data,
+        },
+    }
 }
 
 
