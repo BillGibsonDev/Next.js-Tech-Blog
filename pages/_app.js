@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 
-// styules
-import '../styles/globals.css'
+// styles
+import '../styles/globals.css';
 
 // components
 import Layout from '../components/layout';
