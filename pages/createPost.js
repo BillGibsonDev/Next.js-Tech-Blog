@@ -30,7 +30,7 @@ const CreatePost = () =>{
         if(confirm){
             axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/${process.env.NEXT_PUBLIC_ADD_POST_URL}`, {
                 author: author,
-                authorUsername: authorUsername,
+                authorUsername: user.user,
                 postTitle: postTitle,
                 linkTitle: linkTitle,
                 postDate: postDate,
