@@ -223,7 +223,7 @@ const StyledCreatePage = styled.div`
         p, li {
             font-size: 1rem;
             margin-bottom: 1.5em;
-            letter-spacing: 1px;
+            letter-spacing: .5px;
             line-height: 1.7;
             color: #fff;
         }
@@ -235,25 +235,30 @@ const StyledCreatePage = styled.div`
         h4 {
             color: ${pallette.titleColor};
             margin: 30px 0 6px 0;
-            font-size: 2.5rem;
+            font-size: 2rem;
         }
         h5 {
             color: ${pallette.titleColor};
             margin: 10px 0;
-            font-size: 2rem;
+            font-size: 1.7rem;
         }
         h6 {
             color: ${pallette.titleColor};
-            margin: 10px 0 6px 0;
+            margin: 100px 0 6px 0;
             font-size: 1.5rem;
+            @media (max-width: 850px){
+            margin-top: 60px;
+            }
         }
         code {
             display: flex;
-            background: white;
-            padding: 10px;
+            background: #3a3a3a;
+            color: white;
+            padding: 30px;
             font-size: 1rem;
             margin: 10px 0;
             white-space: pre-wrap;
+            overflow-x: auto;
         }
     }
 `;
